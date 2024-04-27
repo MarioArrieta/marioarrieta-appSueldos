@@ -25,7 +25,7 @@ class Empleado (models.Model):
     empleador = models.ForeignKey (Empleador, on_delete=models.CASCADE, verbose_name="Empleador ")
 
     def __str__(self):
-        return f"{self.apellido.upper()} ({self.empleador.razonSocial.title()})"
+        return f"{self.apellido.upper()}, {self.nombre.upper()} ({self.empleador.razonSocial.title()})"
     
     class Meta:
         verbose_name = "Empleado"
@@ -40,10 +40,9 @@ class Pagos (models.Model):
     empleado = models.ForeignKey (Empleado, on_delete=models.CASCADE, verbose_name= "Empleado ")
     
     def __str__(self):
-        return f" {self.empleado.apellido}, {self.empleado.nombre} - {self.fecha_pago}"
+        return f"{self.fecha_pago} - {self.empleado.apellido}, {self.empleado.nombre}"
     
     class Meta:
-        verbose_name = "Pago"
         verbose_name_plural = "Pagos"
 
         
