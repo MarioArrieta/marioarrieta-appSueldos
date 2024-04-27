@@ -1,12 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <H1>INDEX DE CORE</H1>
-    
-</body>
-</html>
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block  titulo%}
+   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Acerca de mi</a></li>
+   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#inicio">Inicio</a></li>
+   
+{% endblock titulo %}
+
+{% block imagen %}
+    {% static 'core/img/home.webp' %}
+{% endblock imagen %}
+
+{% block pagina%}
+    PORTAL SUELDOS
+{% endblock pagina%}
+
+{% block mensaje%}
+   "¡Hola! Estamos emocionados de tenerte aquí en el Portal de Sueldos. ¡Descubre todo lo que tenemos para ofrecerte!"
+{% endblock mensaje%}
+
+{% block inicio %}
+   <!-- Portfolio Section-->
+   <section class="page-section portfolio" id="inicio">
+      <div class="container">
+          <!-- Portfolio Section Heading-->
+          <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Inicio</h2>
+          <!-- Icon Divider-->
+          <div class="divider-custom">
+              <div class="divider-custom-line"></div>
+              <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+              <div class="divider-custom-line"></div>
+          </div>
+          <!-- Portfolio Grid Items-->
+          <div class="row justify-content-center">
+              <!-- Portfolio Admin 1-->
+            <div class="col-md-6 col-lg-4 mb-5">
+                <a href="{% url 'admin:index' %}" target="_blank">
+                <div class="portfolio-item mx-auto" style="border-radius: 85px;">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white">Admin</div>
+                    </div>
+                    <img class="img-fluid" src="{% static 'core/img/admin.webp' %}" alt="..." />
+                </div>
+            </a>
+            </div>
+
+              <!-- Portfolio Empleador 2-->
+
+              <div class="col-md-6 col-lg-4 mb-5">
+                  <a href="{% url 'empleador:index' %}" title="Empleador">
+                      <div class="portfolio-item mx-auto" style="border-radius: 85px;">
+                          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                              <div class="portfolio-item-caption-content text-center text-white">Empleador</div>
+                          </div>
+                          <img class="img-fluid" src= "{% static 'core/img/empleador.webp' %}" alt="..." />
+                      </div>
+                  </a>
+              </div>
+
+
+
+              <!-- Portfolio Empleado -->
+              <div class="col-md-6 col-lg-4 mb-5">
+                <a href="{% url 'empleado:index' %}" title="Empleado">
+                      <div class="portfolio-item mx-auto" style="border-radius: 85px;">
+                          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                              <div class="portfolio-item-caption-content text-center text-white">Empleado</div>
+                          </div>
+                          <img class="img-fluid" src="{% static 'core/img/empleado.webp' %}" alt="..." />
+                      </div>
+                  </a>
+              </div>
+
+          </div>
+      </div>
+  </section>
+{% endblock inicio %}
+
+
+{% block acerca %}
+   <!-- About Section-->
+ <section class="page-section bg-primary text-white mb-0" id="about">
+   <div class="container">
+       <!-- About Section Heading-->
+       <h2 class="page-section-heading text-center text-uppercase text-white">Acerca de mi</h2>
+       <!-- Icon Divider-->
+       <div class="divider-custom divider-light">
+           <div class="divider-custom-line"></div>
+           <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+           <div class="divider-custom-line"></div>
+       </div>
+       <!-- About Section Content-->
+       <div class="row">
+           <div class="col-lg-4 ms-auto"><p class="lead">¡Hola! Soy Mario Arrieta, un administrativo con base en Mendoza, Argentina. Durante los últimos 20 años, he trabajado en recursos humanos 
+                                                          para una empresa de consultoría de servicios, desarrollando habilidades en gestión administrativa y liderazgo de equipos. Actualmente, estudio inglés 
+                                                          y me sumerjo en la programación con Python en Coderhouse. Estoy emocionado por explorar el potencial de la programación en diversos campos</p></div>
+           <div class="col-lg-4 me-auto"><p class="lead">En mi tiempo libre, disfruto explorando la hermosa región de Mendoza al aire libre. Ya sea caminando por la montaña o descubriendo nuevos lugares para disfrutar de la naturaleza, 
+                                                         encuentro paz y renovación en el paisaje que nos rodea. Emocionado por lo que el futuro me depara mientras continúo aprendiendo y creciendo tanto personal 
+                                                         como profesionalmente. ¡Siempre abierto a nuevas oportunidades y desafíos!</p></div>
+       </div>
+       
+   </div>
+</section>
+{% endblock acerca %}
+
+
+
+ 
