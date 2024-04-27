@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block  titulo%}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:index' %}">Volver</a></li>
+{% endblock titulo %}
+
+{% block imagen %}
+   {% static 'empleador/img/empleador.webp' %}
+{% endblock imagen %}
+
+{% block pagina%}
+   PORTAL EMPLEADOR
+{% endblock pagina%}
+
+{% block mensaje%}
+    VACACIONES
+{% endblock mensaje%}
+
+{% block formulario %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+{% endblock formulario %}
+
