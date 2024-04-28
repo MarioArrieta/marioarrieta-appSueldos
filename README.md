@@ -1,7 +1,8 @@
 #
 # PROYECTO PORTAL SUELDOS
 
-### AUTOR: Arrieta Mario Alberto
+### COMISION: Curso Python - 54135
+### ALUMNO: Mario Alberto Arrieta
 
 #
 ## OBJETIVOS
