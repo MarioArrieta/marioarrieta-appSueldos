@@ -3,7 +3,7 @@
 
 
 {% block  titulo%}
-   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="">Notificaciones</a></li>
+   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleado:buscar' %}">NOTIFICACIONES</a></li>
    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'core:index' %}">Home</a></li>
 {% endblock titulo %}
 
@@ -16,3 +16,7 @@
 {% block pagina%}
    PORTAL EMPLEADO
 {% endblock pagina%}
+
+{% block mensaje%}
+    ¡Bienvenido! Comunicate facilmente con tu empleador
+{% endblock mensaje%}

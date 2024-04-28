@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block  titulo%}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleado:index' %}">Volver</a></li>
+{% endblock titulo %}
+
+{% block imagen %}
+   {% static 'empleado/img/empleado.webp' %}
+{% endblock imagen %}
+
+{% block pagina%}
+   PORTAL EMPLEADO
+{% endblock pagina%}
+
+{% block mensaje%}
+    PAGOS RECIBIDOS
+{% endblock mensaje%}
+
+{% block formulario %}
+    <br>
+        {% if pagos %}
+        <div class="row justify-content-center m-0 ">
+            <div class="col-lg-5    ">
+                <ul class="list-group">
+                    {% for pago in pagos %}
+                    <li class="list-group-item">{{pago.empleado.apellido}}, {{pago.empleado.nombre}}  - Fecha de pago : {{ pago.fecha_pago }} -  Importe: $ {{ pago.importe }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% else %}
+            <div class="row justify-content-center m-0">
+                <div class="col-lg-5 text-center">
+                    <p class="text-muted">No se encontraron pagos para la búsqueda solicitada.</p>
+                </div>
+            </div>
+        {% endif %}
+    <br>
+{% endblock formulario%} 
+

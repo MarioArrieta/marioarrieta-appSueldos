@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block  titulo%}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleado:index' %}">Volver</a></li>
+{% endblock titulo %}
+
+{% block imagen %}
+   {% static 'empleado/img/empleado.webp' %}
+{% endblock imagen %}
+
+{% block pagina%}
+   PORTAL EMPLEADO
+{% endblock pagina%}
+
+{% block mensaje%}
+    BUSCAR 
+{% endblock mensaje%}
+
+{% block formulario %}
+<div class="container py-lg-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-3 ">
+            <!-- Mensaje explicativo -->
+            <p class="text-center">Información sobre Pagos: </p>
+            <!-- Formulario de búsqueda -->
+            <form action="{% url 'empleado:pagos_read' %}" method="get" class="text-center">
+                <div class="input-group">
+                    <input type="number" name="cuil" class="form-control" placeholder="Ingrese su CUIL...">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary" >Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container py-lg-4  ">
+    <div class="row justify-content-center">
+        <div class="col-lg-3 ">
+            <!-- Mensaje explicativo -->
+            <p class="text-center">Información sobre Vacaciones: </p>
+            <!-- Formulario de búsqueda -->
+            <form action="{% url 'empleado:vacaciones_read' %}" method="get" class="text-center">
+                <div class="input-group">
+                    <input type="number" name="cuil" class="form-control" placeholder="Ingrese su CUIL...">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock formulario %}
+
+
+
+
