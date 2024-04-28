@@ -10,14 +10,14 @@ Este proyecto esta diseñado para intercambio de notificaciones y/o documentaci�
 ## FUNCIONALIDAD
 La pagina principal tiene tres enlaces:  
 
-<<u>ADMIN:</u>
+* ADMIN:
  
 Este enlace nos va a permitir ingresar  al Panel de Adminisración creado por Django.  
 
 usuario: admin  
 contraseña: admin123 
 
-<u>PORTAL EMPLEADOR:</u>
+* PORTAL EMPLEADOR:
 
 Este enlace nos va a permitir ingresar al Portal Empleador donde vamos a poder realizar las siguientes acciones:  
 
@@ -26,7 +26,7 @@ EMPLEADO NUEVO: Ingresamos al formulario para cargar un empleado (Previamente te
 PAGOS: Ingresamos al formulario para la carga de los pagos (Previamente debemos tener cargados a los empleados).  
 VACACIONES: Ingresamos al formulario para la carga de fecha de vacaciones (Previamente debemos tener cargados a los empleados).  
 
-<u>PORTAL EMPLEADO:</u>
+* PORTAL EMPLEADO:
 
 Este enlace nos va a permitir ingresar al Portal Empleado donde vamos a poder realizar las siguientes acciones:  
 
