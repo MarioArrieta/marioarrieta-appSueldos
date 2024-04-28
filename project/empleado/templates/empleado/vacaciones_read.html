@@ -25,10 +25,10 @@
     <br>
     {% if vacaciones %}
         <div class="row justify-content-center m-0 ">
-            <div class="col-lg-6    ">
+            <div class="col-lg-8     ">
                 <ul class="list-group">
                     {% for vacacion in vacaciones %}
-                    <li class="list-group-item">{{vacacion.empleado.apellido}}, {{vacacion.empleado.nombre}}  - Fecha de Inicio : {{ vacacion.fecha_inicio }} /  Fecha Fin:  {{ vacacion.fecha_fin }}</li>
+                    <li class="list-group-item">{{vacacion.empleado.nombre}} {{vacacion.empleado.apellido}} tus vacaciones comienzan el día {{ vacacion.fecha_inicio }} y finalizan el día {{ vacacion.fecha_fin }}</li>
                     {% endfor %}
                 </ul>
             </div>

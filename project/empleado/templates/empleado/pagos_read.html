@@ -25,7 +25,7 @@
             <div class="col-lg-5    ">
                 <ul class="list-group">
                     {% for pago in pagos %}
-                    <li class="list-group-item">{{pago.empleado.apellido}}, {{pago.empleado.nombre}}  - Fecha de pago : {{ pago.fecha_pago }} -  Importe: $ {{ pago.importe }}</li>
+                    <li class="list-group-item">{{pago.empleado.nombre}} {{pago.empleado.apellido}} el día  {{ pago.fecha_pago }} recibiste un pago de $ {{ pago.importe }}</li>
                     {% endfor %}
                 </ul>
             </div>

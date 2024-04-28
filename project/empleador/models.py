@@ -8,7 +8,7 @@ class Empleador (models.Model):
     email = models.EmailField(verbose_name="e-Mail ")
         
     def __str__(self):
-        return self.razonSocial
+        return f"{self.razonSocial.title()}"
     
     class Meta:
         verbose_name = "Empleador"
@@ -19,13 +19,13 @@ class Empleador (models.Model):
 class Empleado (models.Model):
     apellido = models.CharField(max_length=20, verbose_name="Apellido ")
     nombre = models.CharField(max_length=20, verbose_name="Nombre ")
-    cuil = models.IntegerField(unique=True, verbose_name="CUIT ")
+    cuil = models.IntegerField(unique=True, verbose_name="CUIL ")
     fecha_ingreso = models.DateField(verbose_name="Fecha de ingreso ")
     email = models.EmailField(verbose_name= "e-Mail ")
     empleador = models.ForeignKey (Empleador, on_delete=models.CASCADE, verbose_name="Empleador ")
 
     def __str__(self):
-        return f"{self.apellido.upper()}, {self.nombre.upper()} ({self.empleador.razonSocial.title()})"
+        return f"{self.apellido.title()}, {self.nombre.title()} ({self.empleador.razonSocial.title()})"
     
     class Meta:
         verbose_name = "Empleado"
@@ -40,7 +40,7 @@ class Pagos (models.Model):
     empleado = models.ForeignKey (Empleado, on_delete=models.CASCADE, verbose_name= "Empleado ")
     
     def __str__(self):
-        return f"{self.fecha_pago} - {self.empleado.apellido}, {self.empleado.nombre}"
+        return f"{self.fecha_pago} - {self.empleado.apellido.title()}, {self.empleado.nombre.title()}"
     
     class Meta:
         verbose_name_plural = "Pagos"
@@ -54,7 +54,7 @@ class Vacaciones (models.Model):
     empleado = models.ForeignKey (Empleado, on_delete=models.CASCADE, verbose_name= "Empleado ")
     
     def __str__(self):
-        return f" {self.empleado.apellido}, {self.empleado.nombre}"
+        return f" {self.empleado.apellido.title()}, {self.empleado.nombre.title()} - {self.mensaje.title()}"
     
     class Meta:
         verbose_name_plural = "Vacaciones"
