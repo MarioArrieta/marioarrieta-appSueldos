@@ -3,8 +3,8 @@ from django.db import models
 # Create your models here.
 
 class Empleador (models.Model):
-    razonSocial = models.CharField(max_length=20, verbose_name="Razon Social ")
-    cuit = models.IntegerField(unique=True, verbose_name="CUIT ")
+    razonSocial = models.CharField(max_length=50, verbose_name="Razon Social ")
+    cuit = models.PositiveIntegerField(unique=True, verbose_name="CUIT ")
     email = models.EmailField(verbose_name="e-Mail ")
         
     def __str__(self):
@@ -17,9 +17,9 @@ class Empleador (models.Model):
 
 
 class Empleado (models.Model):
-    apellido = models.CharField(max_length=20, verbose_name="Apellido ")
-    nombre = models.CharField(max_length=20, verbose_name="Nombre ")
-    cuil = models.IntegerField(unique=True, verbose_name="CUIL ")
+    apellido = models.CharField(max_length=50, verbose_name="Apellido ")
+    nombre = models.CharField(max_length=50, verbose_name="Nombre ")
+    cuil = models.PositiveIntegerField(unique=True, verbose_name="CUIL ")
     fecha_ingreso = models.DateField(verbose_name="Fecha de ingreso ")
     email = models.EmailField(verbose_name= "e-Mail ")
     empleador = models.ForeignKey (Empleador, on_delete=models.CASCADE, verbose_name="Empleador ")
@@ -35,7 +35,7 @@ class Empleado (models.Model):
     
 class Pagos (models.Model):
     fecha_pago = models.DateField(verbose_name="Fecha de Pago ")
-    importe = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Importe ")
+    importe = models.PositiveIntegerField(verbose_name="Importe ")
     mensaje = models.CharField(max_length=50, verbose_name="Mensaje ")
     empleado = models.ForeignKey (Empleado, on_delete=models.CASCADE, verbose_name= "Empleado ")
     
