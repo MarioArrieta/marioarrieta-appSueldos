@@ -14,7 +14,7 @@ class Notificaciones(models.Model):
     empleado = models.ForeignKey (Empleado, on_delete=models.CASCADE, verbose_name= "Empleado")
     
     def __str__(self):
-        return f"Notificaciones - {self.fecha_notificacion}"
+        return f"{self.fecha_notificacion} {self.empleado.apellido}, {self.empleado.nombre}"
     
     class Meta:
         verbose_name_plural = "Notificaciones"
