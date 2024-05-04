@@ -56,9 +56,9 @@ class Pagos (models.Model):
     liquidacion = models.CharField(max_length=20, choices=liquidacion, verbose_name= "Liquidación")
     meses = models.CharField(max_length=10, choices=meses, verbose_name= "Mes")
     año = models.PositiveIntegerField(validators=[validate_year_range], verbose_name="Año")
-    empleado = models.ForeignKey (Empleado, on_delete=models.CASCADE, verbose_name= "Empleado")
     archivo_adjunto = models.FileField (null=True, blank=True, upload_to="archivos/recibos/", verbose_name="Archivo adjunto")
     visto = models.BooleanField (editable=False, default=False, verbose_name="Visto")
+    empleado = models.ForeignKey (Empleado, on_delete=models.CASCADE, verbose_name= "Empleado")
     
     def __str__(self):
         return f"Pagos - {self.fecha_notificacion}"
