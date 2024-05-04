@@ -4,6 +4,7 @@
 
 {% block  titulo%}
    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:pagos_create' %}">Pagos</a></li>
+   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:suspensiones_create' %}">Suspensiones</a></li>
    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:vacaciones_create' %}">Vacaciones</a></li>
    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:empleado_create' %}">Empleado Nuevo</a></li>
    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'core:index' %}">Home</a></li>
@@ -20,4 +21,42 @@
 {% block mensaje%}
     ¡Bienvenido! Organiza y gestiona tu personal
 {% endblock mensaje%}
+
+{% block formulario %}
+
+
+    <br>
+            {% if object_list %}
+            <div class="row justify-content-center m-0">
+                <div class="col-lg-4  ">
+                    <ul class="list-group">
+                        {% for pago in object_list %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                {% if not pago.leido %}
+                                    <span class="badge bg-success">Leído</span>
+                                {% else %}
+                                    <span class="badge bg-warning text-dark">No leído</span>
+                                {% endif %}
+                                {{ pago}}
+                            </div>
+                            <div>
+                                <a href="{% url 'empleado:pagos_detail' pago.id %}" class="btn btn-sm btn-primary mx-1">Detalle</a>
+                                <a href="" class="btn btn-sm btn-danger mx-1">Borrar</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+            <div class="row justify-content-center m-0">
+                <div class="col-lg-5 text-center">
+                    <p class="text-muted">No se encontraron pagos para la búsqueda solicitada.</p>
+                </div>
+            </div>
+            {% endif %}
+
+
+{% endblock formulario%} 
 

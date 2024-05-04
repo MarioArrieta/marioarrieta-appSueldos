@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from . import forms, models
+from empleado.models import Notificaciones
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
@@ -11,6 +12,11 @@ def inicio (request):
 def login (request):
     return render (request, "empleador/login.html")
 
+
+class NotificacionesRead(ListView):
+    model = Notificaciones
+    template_name = "empleador/index.html"
+   
 
 class EmpleadorCreate(CreateView):
     model = models.Empleador
@@ -27,6 +33,12 @@ class EmpleadoCreate(CreateView):
 class PagosCreate(CreateView):
     model = models.Pagos
     form_class = forms.PagosForm
+    success_url = reverse_lazy ("empleador:index")
+
+
+class SuspensionesCreate(CreateView):
+    model = models.Suspensiones
+    form_class = forms.SuspensionesForm
     success_url = reverse_lazy ("empleador:index")
 
 

@@ -72,7 +72,7 @@ class Vacaciones (models.Model):
     fecha_notificacion = models.DateField(auto_now=True, verbose_name="Fecha de Notificación")
     fecha_inicio = models.DateField(verbose_name="Fecha de Inicio")
     fecha_fin = models.DateField(verbose_name="Fecha de Finalizacion")
-    período = models.PositiveIntegerField(validators=[validate_year_range], verbose_name="Corresponden al período")
+    período = models.PositiveIntegerField(validators=[validate_year_range], verbose_name="Corresponden al año")
     archivo_adjunto = models.FileField (null=True, blank=True, upload_to="archivos/vacaciones/", verbose_name="Archivo adjunto")
     visto = models.BooleanField (editable=False, default=False, verbose_name="Visto")
     empleado = models.ForeignKey (Empleado, on_delete=models.CASCADE, verbose_name= "Empleado")

@@ -5,7 +5,7 @@ from .choices import tipo_notificacion
 
 
 # CLASE QUE PERMITE CREAR NOTIFICACIONES DE LOS EMPLEADOS
-class Notificaciones (models.Model):
+class Notificaciones(models.Model):
     fecha_notificacion = models.DateField(auto_now=True, verbose_name="Fecha de Notificación")
     tipo = models.CharField(max_length=20, choices=tipo_notificacion, verbose_name= "Tipo")
     descripcion = models.CharField(null= True, blank=True, max_length=200, verbose_name="Descripcion")
