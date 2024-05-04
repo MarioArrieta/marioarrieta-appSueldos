@@ -1,29 +1,30 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from empleador.models import Vacaciones, Pagos
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView, DetailView
+from empleador import models
 
-# Create your views here.
 
-def inicio (request):
-    return render (request, "empleado/index.html")
+def login (request):
+    return render (request, "empleado/login.html")
 
-def buscar (request):
-    return render (request, "empleado/buscar.html")
 
-def pagos_read(request):
-    if request.method == 'GET':
-        cuil = request.GET.get('cuil')
-        if cuil:
-            pagos = Pagos.objects.filter(empleado__cuil=cuil)
-            return render(request, 'empleado/pagos_read.html', {'pagos': pagos})
-    return render(request, 'empleado/pagos_read.html', {})
+class PagosRead(ListView):
+    template_name = "empleado/index.html"
 
-def vacaciones_read(request):
-    if request.method == 'GET':
-        cuil = request.GET.get('cuil')
-        if cuil:
-            vacaciones = Vacaciones.objects.filter(empleado__cuil=cuil)
-            return render(request, 'empleado/vacaciones_read.html', {'vacaciones': vacaciones})
-    return render(request, 'empleado/vacaciones_read.html', {})
+    def get_queryset(self):
+        return models.Pagos.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['vacaciones'] = models.Vacaciones.objects.all()
+        return context
+
+
+class PagosDetail (DetailView):
+    model = models.Pagos
+    template_name = "empleado/pagos_detail.html" 
+    
+
+class VacacionesDetail (DetailView):
+    model = models.Vacaciones
+    template_name = "empleado/vacaciones_detail.html"
 

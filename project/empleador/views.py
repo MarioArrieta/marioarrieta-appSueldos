@@ -1,69 +1,37 @@
+from django.shortcuts import render
+from . import forms, models
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from django.shortcuts import render, redirect
-from . import forms
-from django.contrib import messages
 
 def inicio (request):
     return render (request, "empleador/index.html")
 
-def empleador_create (request):
-    if request.method == "POST":
-        form = forms.EmpleadorForm (request.POST)
-        try:
-            if form.is_valid:
-                form.save()
-                return redirect ("empleador:index")
-        except ValueError:
-            messages.error (request,"")
-    else:
-        form = forms.EmpleadorForm()
-    return render (request, "empleador/empleador_create.html", context={"form":form})
+
+def login (request):
+    return render (request, "empleador/login.html")
 
 
-def empleado_create (request):
-    if request.method == "POST":
-        form = forms.EmpleadoForm (request.POST)
-        try:
-            if form.is_valid:
-                form.save()
-                return redirect ("empleador:index")
-        except ValueError:
-            messages.error (request,"")
-    else:
-        form = forms.EmpleadoForm()
-    return render (request, "empleador/empleado_create.html", context={"form":form})
+class EmpleadorCreate(CreateView):
+    model = models.Empleador
+    form_class = forms.EmpleadorForm
+    success_url = reverse_lazy ("empleador:login")
 
 
-def pagos_create (request):
-    if request.method == "POST":
-        form = forms.PagosForm (request.POST)
-        try:
-            if form.is_valid:
-                form.save()
-                return redirect ("empleador:index")
-        except ValueError:
-            messages.error(request,"")
-    else:
-        form = forms.PagosForm()
-    return render (request, "empleador/pagos_create.html", context={"form":form})
+class EmpleadoCreate(CreateView):
+    model = models. Empleado
+    form_class = forms.EmpleadoForm
+    success_url = reverse_lazy ("empleador:index")
 
 
-def vacaciones_create (request):
-    if request.method == "POST":
-        form = forms.VacacionesForm (request.POST)
-        try:
-            if form.is_valid:
-                form.save()
-                return redirect ("empleador:index")
-        except ValueError:
-            messages.error(request, "")
-    else:
-        form = forms.VacacionesForm()
-    return render (request, "empleador/vacaciones_create.html", context={"form":form})
+class PagosCreate(CreateView):
+    model = models.Pagos
+    form_class = forms.PagosForm
+    success_url = reverse_lazy ("empleador:index")
 
 
-
-
-
-
+class VacacionesCreate (CreateView):
+    model = models.Vacaciones
+    form_class = forms.VacacionesForm
+    success_url = reverse_lazy ("empleador:index")
 

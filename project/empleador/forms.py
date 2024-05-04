@@ -22,3 +22,8 @@ class VacacionesForm(forms.ModelForm):
     class Meta:
         model = models.Vacaciones
         fields = "__all__"
+
+class SuspensionesForm(forms.ModelForm):
+    class Meta:
+        model = models.Suspensiones
+        fields = "__all__"

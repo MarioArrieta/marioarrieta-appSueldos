@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block  titulo%}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleado:index' %}">Volver</a></li>
+{% endblock titulo %}
+
+{% block imagen %}
+   {% static 'empleado/img/empleado.webp' %}
+{% endblock imagen %}
+
+{% block pagina%}
+   PORTAL EMPLEADO
+{% endblock pagina%}
+
+{% block mensaje%}
+    DETALLE PAGOS
+{% endblock mensaje%}
+
+{% block formulario%}
+<style>
+    .detalle-pago {
+        width: 50%; /* Ancho del contenedor */
+        margin: 0 auto; /* Margen automático a izquierda y derecha para centrar */
+        text-align: left; /* Alineación del texto a la izquierda dentro del contenedor */
+        border: 2px solid #ccc; /* Borde para resaltar el contenedor */
+        padding: 20px; /* Espaciado interior para mejorar la legibilidad */
+        border-radius: 10px; /* Borde redondeado para suavizar las esquinas */
+    }
+
+    .detalle-pago h2 {
+        text-align: center; /* Alinea el título al centro */
+    }
+
+    .detalle-pago ul {
+        list-style: none; /* Quita los estilos de la lista */
+        padding: 0; /* Elimina el relleno predeterminado de la lista */
+    }
+
+    .detalle-pago ul li {
+        margin-bottom: 10px; /* Espaciado entre elementos de la lista */
+    }
+</style>
+
+<div class="detalle-pago">
+    <ul>
+        <li><strong>APELLIDO Y NOMBRE:</strong> {{ object.empleado.apellido }}, {{ object.empleado.nombre }}</li>
+        <li><strong>CUIL:</strong> {{ object.empleado.cuil }}</li>
+        <li><strong>FECHA DE PAGO:</strong> {{ object.fecha_pago }}</li>
+        <li><strong>IMPORTE:$ </strong> {{ object.importe }}</li>
+        <li><strong>MENSAJE:</strong> {{ object.mensaje }}</li>
+    </ul>
+</div>
+
+{% endblock formulario%}
+
