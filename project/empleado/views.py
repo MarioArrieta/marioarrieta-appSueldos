@@ -3,13 +3,14 @@ from . import forms, models
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView, DetailView
 from empleador.models import Pagos, Vacaciones
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def login (request):
     return render (request, "empleado/login.html")
 
 
-class PagosRead(ListView):
+class PagosRead(LoginRequiredMixin, ListView):
     template_name = "empleado/index.html"
 
     def get_queryset(self):
@@ -21,18 +22,18 @@ class PagosRead(ListView):
         return context
     
     
-class NotificacionesCreate(CreateView):
+class NotificacionesCreate(LoginRequiredMixin, CreateView):
     model = models.Notificaciones
     form_class = forms.NotificacionesForm
     success_url = reverse_lazy ("empleado:index")
 
 
-class PagosDetail (DetailView):
+class PagosDetail (LoginRequiredMixin, DetailView):
     model = Pagos
     template_name = "empleado/pagos_detail.html" 
     
 
-class VacacionesDetail (DetailView):
+class VacacionesDetail (LoginRequiredMixin, DetailView):
     model = Vacaciones
     template_name = "empleado/vacaciones_detail.html"
 

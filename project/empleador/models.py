@@ -1,6 +1,7 @@
 from django.db import models
 from .choices import meses, liquidacion
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
 
 # FUNCION QUE PERMITE VALIDAR AÑOS PARA QUE SE PUEDAD CARGAR ENTRE 1900 Y 2100
@@ -18,6 +19,7 @@ def validate_cuil_length(value):
 
 # CLASE QUE PERMITE CREAR A UN EMPLEADOR
 class Empleador (models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Usuario", null=True, blank=True, editable=False)
     razonSocial = models.CharField(max_length=50, verbose_name="Razon Social")
     cuit = models.PositiveIntegerField(validators=[validate_cuil_length], unique=True, verbose_name="CUIT")
     email = models.EmailField(verbose_name="e-Mail")
@@ -39,6 +41,7 @@ class Empleado (models.Model):
     fecha_baja = models.DateField(null= True, blank = True, verbose_name="Fecha de baja")
     email = models.EmailField(verbose_name= "e-Mail ")
     empleador = models.ForeignKey (Empleador, on_delete=models.CASCADE, verbose_name="Empleador")
+    
 
     def __str__(self):
         return f"{self.apellido.title()}, {self.nombre.title()}"
@@ -60,6 +63,7 @@ class Pagos (models.Model):
     visto = models.BooleanField (editable=False, default=False, verbose_name="Visto")
     empleado = models.ForeignKey (Empleado, on_delete=models.CASCADE, verbose_name= "Empleado")
     
+    
     def __str__(self):
         return f"Pagos - {self.fecha_notificacion}"
     
@@ -76,6 +80,7 @@ class Vacaciones (models.Model):
     archivo_adjunto = models.FileField (null=True, blank=True, upload_to="archivos/vacaciones/", verbose_name="Archivo adjunto")
     visto = models.BooleanField (editable=False, default=False, verbose_name="Visto")
     empleado = models.ForeignKey (Empleado, on_delete=models.CASCADE, verbose_name= "Empleado")
+    
     
     
     def __str__(self):
