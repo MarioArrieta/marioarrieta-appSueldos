@@ -3,11 +3,8 @@
 
 
 {% block  titulo%}
-   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:pagos_create' %}">Pagos</a></li>
-   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:suspensiones_create' %}">Suspensiones</a></li>
-   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:vacaciones_create' %}">Vacaciones</a></li>
-   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:empleado_create' %}">Buscar Empleado</a></li>
-   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:empleado_create' %}">Empleado Nuevo</a></li>
+   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:empleado_buscar' %}">Buscar Empleado</a></li>
+   <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:empleado_create' %}">Cargar Empleado</a></li>
    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'core:index' %}">Logout</a></li>
 {% endblock titulo %}
 
@@ -58,13 +55,14 @@
                 </ul>
             </div>
         </div>
+        <br>
         {% else %}
         <div class="row justify-content-center m-0">
             <div class="col-lg-5 text-center">
                 <p class="text-muted">No hay notificaciones</p>
             </div>
         </div>
-        
+        <br>
         {% endif %}
 
 

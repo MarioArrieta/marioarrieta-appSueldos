@@ -1,5 +1,5 @@
 from . import forms, models
-from empleado.models import Notificaciones
+from empleado.models import Notificaciones, Empleado
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,15 +28,15 @@ def register(request: HttpRequest) -> HttpResponse:
     return render(request, "empleador/empleador_form.html", {"form": form})
 
 
+class EmpleadoRead(LoginRequiredMixin,ListView):
+    model = Empleado
+    template_name = "empleador/empleado_buscar.html"
+
+
 class NotificacionesRead(LoginRequiredMixin,ListView):
     model = Notificaciones
     template_name = "empleador/index.html"
-   
 
-# class EmpleadorCreate(LoginRequiredMixin, CreateView):
-#     model = models.Empleador
-#     form_class = forms.EmpleadorForm
-#     success_url = reverse_lazy ("empleador:login")
 
 
 class EmpleadoCreate(LoginRequiredMixin, CreateView):

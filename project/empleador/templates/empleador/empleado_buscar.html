@@ -1,0 +1,47 @@
+
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block  titulo%}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:index' %}">Volver</a></li>
+{% endblock titulo %}
+
+{% block imagen %}
+   {% static 'empleador/img/empleador.webp' %}
+{% endblock imagen %}
+
+{% block pagina%}
+   PORTAL EMPLEADOR
+{% endblock pagina%}
+
+{% block mensaje%}
+    LISTADO DE EMPLEADOS
+{% endblock mensaje%}
+
+{% block formulario %}
+    <br>
+    {% if object_list %}
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <ul class="list-group">
+                {% for empleado in object_list %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        {{ empleado }}
+                    </div>
+                    <div>
+                        <a href="{% url 'empleador:pagos_create' %}" class="btn btn-sm btn-primary mx-1 btn-warning">Modificar</a>
+                        <a href="{% url 'empleador:pagos_create' %}" class="btn btn-sm btn-primary mx-1">Pagos</a>
+                        <a href="{% url 'empleador:suspensiones_create' %}" class="btn btn-sm btn-primary mx-1">Suspensiones</a>
+                        <a href="{% url 'empleador:vacaciones_create' %}" class="btn btn-sm btn-primary mx-1">Vacaciones</a>
+                        <a href="{% url 'empleador:vacaciones_create' %}" class="btn btn-sm btn-danger">Borrar</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    <br>
+{% endblock formulario %}
