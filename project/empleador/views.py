@@ -25,7 +25,14 @@ def register(request: HttpRequest) -> HttpResponse:
 
     else:
         form = CustomUserCreationForm()
-    return render(request, "empleador/empleador_form.html", {"form": form})
+    return render(request, "empleador/register.html", {"form": form})
+
+
+class EmpleadorCreate(LoginRequiredMixin, CreateView):
+    model = models. Empleador
+    form_class = forms.EmpleadorForm
+    success_url = reverse_lazy ("empleador:index")
+
 
 
 class EmpleadoRead(LoginRequiredMixin,ListView):

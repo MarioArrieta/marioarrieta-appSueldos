@@ -1,9 +1,11 @@
 from django import forms
 from django.db import models
-from empleador.models import Empleado, Pagos, Vacaciones, Suspensiones
+from empleador.models import Empleado, Empleador, Pagos, Vacaciones, Suspensiones
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
+
+
+
 
 
 class CustomAuthenticationForm(AuthenticationForm):
@@ -16,48 +18,67 @@ class CustomAuthenticationForm(AuthenticationForm):
 
 
 class CustomUserCreationForm(UserCreationForm):
-    razon_social = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    usuario = forms.CharField(max_length=11, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su CUIT'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     password2 = forms.CharField(label="Confirmar Contraseña", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-
-    def clean_usuario(self):
-        usuario = self.cleaned_data['usuario']
-        if not usuario.isdigit() or len(usuario) != 11:
-            raise ValidationError('El CUIT debe tener 11 caracteres numéricos.')
-        return usuario
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.username = self.cleaned_data['usuario']
-        user.last_name = self.cleaned_data['razon_social']
-        user.email = self.cleaned_data['email']
-        if commit:
-            user.save()
-        return user
-
+    
     class Meta:
         model = User
-        fields = ["razon_social", "email", "usuario", "password1", "password2" ]
+        fields = ["username", "password1", "password2" ]
+
+
+class EmpleadorForm(forms.ModelForm):
+    razonSocial = forms.CharField(label="Razon Social ", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    cuit = forms.CharField( label= "CUIT ", max_length=11, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.CharField(label= "e-mail", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    class Meta:
+        model = Empleador
+        fields = "__all__"
+
 
 
 class EmpleadoForm(forms.ModelForm):
+    empleador = forms.ModelChoiceField(queryset=Empleador.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    apellido = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control'}))
+    nombre = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control'}))
+    cuil = forms.CharField(label="CUIL", max_length=11, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    fecha_ingreso = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
+    fecha_baja = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
+    email = forms.CharField(label= "e-mail ", widget=forms.TextInput(attrs={'class': 'form-control'}))
+
     class Meta:
         model = Empleado
         fields = "__all__"
 
+
 class PagosForm(forms.ModelForm):
+    empleado = forms.ModelChoiceField(queryset=Empleador.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    fecha_pago = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
+    importe = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control'}))
+    año = forms.CharField( max_length=4, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    
     class Meta:
         model = Pagos
         fields = "__all__"
+
         
 class VacacionesForm(forms.ModelForm):
+    empleado = forms.ModelChoiceField(queryset=Empleador.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    fecha_inicio = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
+    fecha_fin = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
+    período = forms.CharField( max_length=4, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    
     class Meta:
         model = Vacaciones
         fields = "__all__"
 
+
 class SuspensionesForm(forms.ModelForm):
+    empleado = forms.ModelChoiceField(queryset=Empleador.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    cantidad_dias = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control'}))
+    fecha_reingreso = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
+    motivo = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control'}))
+    
     class Meta:
         model = Suspensiones
         fields = "__all__"
