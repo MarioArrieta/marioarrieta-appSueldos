@@ -55,15 +55,16 @@
                     {% for notificaciones in object_list %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <div>
-                            {% if notificaciones.leido %}
+                            {% if notificaciones.visto %}
                                 <span class="badge bg-success">Leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
                             {% else %}
                                 <span class="badge bg-warning text-dark">No leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
                             {% endif %}
-                            {{notificaciones}}
-                        </div>
+                                {{notificaciones}}
+                                                              
+                       </div>
                         <div>
-                            <a href="{% url 'empleado:pagos_detail' notificaciones.id %}" class="btn btn-sm btn-primary mx-1">Detalle</a>
+                            <a href="{% url 'empleador:notificaciones_detail' notificaciones.id %}" class="btn btn-sm btn-primary mx-1">Detalle</a>
                         </div>
                     </li>
                     {% endfor %}

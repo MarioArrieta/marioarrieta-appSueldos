@@ -43,7 +43,6 @@ class EmpleadoForm(forms.ModelForm):
     nombre = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control'}))
     cuil = forms.CharField(label="CUIL", max_length=11, widget=forms.TextInput(attrs={'class': 'form-control'}))
     fecha_ingreso = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
-    fecha_baja = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
     email = forms.CharField(label= "e-mail ", widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:

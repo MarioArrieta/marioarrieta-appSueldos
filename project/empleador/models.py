@@ -38,7 +38,6 @@ class Empleado (models.Model):
     nombre = models.CharField(max_length=50, verbose_name="Nombre")
     cuil = models.PositiveIntegerField(validators=[validate_cuil_length], unique=True, verbose_name="CUIL")
     fecha_ingreso = models.DateField(verbose_name="Fecha de ingreso")
-    fecha_baja = models.DateField(null= True, blank = True, verbose_name="Fecha de baja")
     email = models.EmailField(verbose_name= "e-Mail ")
     
     

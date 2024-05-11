@@ -3,11 +3,11 @@
 
 
 {% block  titulo%}
-    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:login' %}">Volver</a></li>
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleado:login' %}">Volver</a></li>
 {% endblock titulo %}
 
 {% block imagen %}
-   {% static 'empleador/img/empleador.webp' %}
+    {% static 'empleado/img/empleado.webp' %}
 {% endblock imagen %}
 
 {% block pagina%}
@@ -15,7 +15,7 @@
 {% endblock pagina%}
 
 {% block mensaje%}
-    PORTAL EMPLEADOR
+    PORTAL EMPLEADO
 {% endblock mensaje%}
 
 {% block formulario %}
@@ -31,6 +31,7 @@
         </div>
     </form>
 </div>
+
 {% endblock formulario %}
 
 
