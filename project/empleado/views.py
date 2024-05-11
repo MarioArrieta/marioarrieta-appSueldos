@@ -2,7 +2,7 @@ from django.shortcuts import render
 from . import forms, models
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView, DetailView
-from empleador.models import Pagos, Vacaciones
+from empleador.models import Pagos, Vacaciones, Suspensiones
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from .forms import CustomAuthenticationForm, CustomUserCreationForm
@@ -37,6 +37,7 @@ class PagosRead(LoginRequiredMixin, ListView):
         return Pagos.objects.all()
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['suspensiones'] = Suspensiones.objects.all()
         context['vacaciones'] = Vacaciones.objects.all()
         return context
     
@@ -58,4 +59,9 @@ class PagosDetail (LoginRequiredMixin, DetailView):
 class VacacionesDetail (LoginRequiredMixin, DetailView):
     model = Vacaciones
     template_name = "empleado/vacaciones_detail.html"
+
+# Muestra un detalle de las notificaciones (Vacaciones) recibidas por el empleador
+class SuspensionesDetail (LoginRequiredMixin, DetailView):
+    model = Suspensiones
+    template_name = "empleado/suspensiones_detail.html"
 

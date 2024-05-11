@@ -63,7 +63,7 @@ class Pagos (models.Model):
     
     
     def __str__(self):
-        return f"Pagos - {self.fecha_notificacion}"
+        return f"{self.fecha_notificacion} -  {self.empleado.apellido}, {self.empleado.nombre} ({self.empleado.empleador.razonSocial})"
     
     class Meta:
         verbose_name_plural = "Pagos"
@@ -82,7 +82,7 @@ class Vacaciones (models.Model):
     
     
     def __str__(self):
-        return f"Vacaciones  - {self.fecha_notificacion}"
+        return f"{self.fecha_notificacion} - {self.empleado.apellido}, {self.empleado.nombre} ({self.empleado.empleador.razonSocial})"
     
     class Meta:
         verbose_name_plural = "Vacaciones"
@@ -99,7 +99,7 @@ class Suspensiones (models.Model):
     
     
     def __str__(self):
-        return f"Suspensiones  - {self.fecha_notificacion}"
+        return f"{self.fecha_notificacion} - {self.empleado.apellido}, {self.empleado.nombre} ({self.empleado.empleador.razonSocial})"
     
     class Meta:
         verbose_name_plural = "Suspensiones"

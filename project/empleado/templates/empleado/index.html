@@ -44,21 +44,22 @@
 
 
         {% if object_list %}
+        <h3 class="text-center">Pagos</h3>
         <div class="row justify-content-center m-0">
-            <div class="col-lg-6  ">
+            <div class="col-lg-6">
                 <ul class="list-group">
-                    {% for notificaciones in object_list %}
+                    {% for item in object_list %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <div>
-                            {% if notificaciones.leido %}
+                            {% if item.leido %}
                                 <span class="badge bg-success">Leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
                             {% else %}
                                 <span class="badge bg-warning text-dark">No leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
                             {% endif %}
-                            {{notificaciones}}
+                            {{ item }}
                          </div>
                         <div>
-                            <a href="{% url 'empleado:pagos_detail' notificaciones.id %}" class="btn btn-sm btn-primary mx-1">Detalle</a>
+                            <a href="{% url 'empleado:pagos_detail' item.id %}" class="btn btn-sm btn-primary mx-1">Detalle</a>
                         </div>
                     </li>
                     {% endfor %}
@@ -66,12 +67,81 @@
             </div>
         </div>
         {% else %}
-        <div class="row justify-conte nt-center m-0">
-            <div class="col-lg-5 text-center">
-                <p class="text-muted">No se encontraron pagos para la búsqueda solicitada.</p>
+                <div class="row justify-content-center m-0">
+                    <div class="col-lg-5 text-center">
+                        <h3 class="text-center">Pagos</h3>
+                        <p class="text-muted">No hay notificaciones</p>
+                    </div>
+                </div>
+
+        {% endif %} <br><br>
+    
+            {% if suspensiones %}
+            <h3 class="text-center">Suspensiones</h3>
+            <div class="row justify-content-center m-0">
+                <div class="col-lg-6">
+                    <ul class="list-group">
+                        {% for item in suspensiones %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                {% if item.leido %}
+                                    <span class="badge bg-success">Leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                {% else %}
+                                    <span class="badge bg-warning text-dark">No leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                {% endif %}
+                                {{ item }}
+                            </div>
+                            <div>
+                                <a href="{% url 'empleado:suspensiones_detail' item.id %}" class="btn btn-sm btn-primary mx-1">Detalle</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
-        </div>
-        {% endif %}
+            {% else %}
+                <div class="row justify-content-center m-0">
+                    <div class="col-lg-5 text-center">
+                        <h3 class="text-center">Suspensiones</h3>
+                        <p class="text-muted">No hay notificaciones</p>
+                    </div>
+                </div>
+        {% endif %} <br><br>
+
+
+        {% if vacaciones %}
+            <h3 class="text-center">Vacaciones</h3>
+            <div class="row justify-content-center m-0">
+                <div class="col-lg-6">
+                    <ul class="list-group">
+                        {% for item in vacaciones %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                {% if item.leido %}
+                                    <span class="badge bg-success">Leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                {% else %}
+                                    <span class="badge bg-warning text-dark">No leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                {% endif %}
+                                {{ item }}
+                            </div>
+                            <div>
+                                <a href="{% url 'empleado:vacaciones_detail' item.id %}" class="btn btn-sm btn-primary mx-1">Detalle</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+                <div class="row justify-content-center m-0">
+                    <div class="col-lg-5 text-center">
+                        <h3 class="text-center">Vacaciones</h3>
+                        <p class="text-muted">No hay notificaciones</p>
+                    </div>
+                </div>
+        {% endif %} <br><br>
+        
+    
 
 
 {% endblock formulario%} 
