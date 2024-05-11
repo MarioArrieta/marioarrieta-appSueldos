@@ -6,16 +6,21 @@
     <li class="nav-item mx-0 mx-lg-1">
         <a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:empleado_buscar' %}">Empleados</a>
     </li>
-    
+
     <li class="nav-item mx-0 mx-lg-1">
         <a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:empleador_create' %}">Empleadores</a>
     </li>
     <li class="nav-item mx-0 mx-lg-1">
-        <a class="nav-link py-3 px-0 px-lg-3 rounded" style="background-color: #6dafec; padding: 5px 10px; border-radius: 5px;">{{user}}</a>
+        <a class="nav-link py-3 px-0 px-lg-3 rounded" style="background-color: #6dafec; padding: 5px 10px; border-radius: 5px;">{{ user }}</a>
     </li>
     <li class="nav-item mx-0 mx-lg-1">
-        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'core:index' %}">Logout</a>
+        <form action="{% url 'empleador:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="nav-link py-3 px-0 px-lg-3 rounded" style="background-color: #d81952; padding: 5px 10px; border-radius: 5px; border: none; color: white;">Salir</button>
+
+        </form>
     </li>
+
 
 
 {% endblock titulo %}
