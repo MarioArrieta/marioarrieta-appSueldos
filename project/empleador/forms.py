@@ -1,11 +1,7 @@
 from django import forms
-from django.db import models
 from empleador.models import Empleado, Empleador, Pagos, Vacaciones, Suspensiones
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
-
-
-
 
 
 class CustomAuthenticationForm(AuthenticationForm):
