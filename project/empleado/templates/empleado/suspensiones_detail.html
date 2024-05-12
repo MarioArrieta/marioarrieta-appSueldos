@@ -1,11 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <H1>detalle de suspensiones</H1>
-</body>
-</html>
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block  titulo%}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleado:index' %}">Volver</a></li>
+{% endblock titulo %}
+
+{% block imagen %}
+   {% static 'empleado/img/empleado.webp' %}
+{% endblock imagen %}
+
+{% block pagina%}
+    DETALLE SUSPENSIONES
+{% endblock pagina%}
+
+{% block mensaje%}
+    PORTAL EMPLEADO
+{% endblock mensaje%}
+
+{% block formulario%}
+        <br>
+
+        <div class="detalle-notificaciones">
+            <h2 class="text-center">{{ object.empleado.apellido}}, {{ object.empleado.nombre }}</h2><br>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Empresa</h5>
+                            <p class="card-text">{{ object.empleado.empleador.razonSocial }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Cantidad de días</h5>
+                            <p class="card-text">{{ object.cantidad_dias }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Motivo</h5>
+                            <p class="card-text">{{ object.motivo}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Fecha de Reingreso</h5>
+                            <p class="card-text">{{ object.fecha_reingreso }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+{% endblock formulario%}
+
