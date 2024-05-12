@@ -11,6 +11,7 @@ urlpatterns = [
         path ("logout/", LogoutView.as_view(template_name="empleador/logout.html"), name="logout"),
         path ("empleado/buscar/", views.EmpleadoRead.as_view(), name = "empleado_buscar"),
         path ("notificaciones/detail/<pk>", views.NotificacionesDetail.as_view(), name ="notificaciones_detail"),
+        path ("empleado/update/<pk>", views.EmpleadoUpdate.as_view(), name ="empleado_update"),
         path("empleador/create/", views.EmpleadorCreate.as_view(), name="empleador_create"),
         path("empleado/create/", views.EmpleadoCreate.as_view(), name="empleado_create"),
         path("pagos/create/", views.PagosCreate.as_view(), name="pagos_create"),

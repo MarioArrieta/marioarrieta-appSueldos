@@ -4,6 +4,10 @@
 
 
 {% block  titulo%}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:pagos_create' %}">Pagos</a></li>
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:suspensiones_create' %}">Suspensiones</a></li>
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:vacaciones_create' %}">Vacaciones</a></li>
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:empleado_create' %}">Nuevo</a></li>
     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:index' %}">Volver</a></li>
 {% endblock titulo %}
 
@@ -12,11 +16,11 @@
 {% endblock imagen %}
 
 {% block pagina%}
-   PORTAL EMPLEADOR
+   EMPLEADOS
 {% endblock pagina%}
 
 {% block mensaje%}
-    LISTADO DE EMPLEADOS
+    PORTAL EMPLEADOR
 {% endblock mensaje%}
 
 {% block formulario %}
@@ -31,10 +35,7 @@
                         {{ empleado }}
                     </div>
                     <div>
-                        <a href="{% url 'empleador:pagos_create' %}" class="btn btn-sm btn-primary mx-1 btn-warning">Modificar</a>
-                        <a href="{% url 'empleador:pagos_create' %}" class="btn btn-sm btn-primary mx-1">Pagos</a>
-                        <a href="{% url 'empleador:suspensiones_create' %}" class="btn btn-sm btn-primary mx-1">Suspensiones</a>
-                        <a href="{% url 'empleador:vacaciones_create' %}" class="btn btn-sm btn-primary mx-1">Vacaciones</a>
+                        <a href="{% url 'empleador:empleado_update' empleado.id %}" class="btn btn-sm btn-primary mx-1 btn-warning">Editar</a>
                         <a href="{% url 'empleador:vacaciones_create' %}" class="btn btn-sm btn-danger">Borrar</a>
                     </div>
                 </li>

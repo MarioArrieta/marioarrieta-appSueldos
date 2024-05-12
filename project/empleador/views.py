@@ -35,7 +35,8 @@ class NotificacionesRead(LoginRequiredMixin, ListView):
     model = Notificaciones
     template_name = "empleador/index.html"
     
-    
+
+# Muestra todos los empleados registrados    
 class EmpleadoRead(LoginRequiredMixin, ListView):
     model = Empleado
     template_name = "empleador/empleado_buscar.html"
@@ -46,6 +47,14 @@ class NotificacionesDetail(DetailView):
     model = Notificaciones
     template_name = "empleador/notificaciones_detail.html"
     
+
+# Formulario para editar datos de los  empleados 
+class EmpleadoUpdate(LoginRequiredMixin, UpdateView):
+    model = models. Empleado
+    form_class = forms.EmpleadoForm
+    template_name = "empleador/empleado_update.html"
+    success_url = reverse_lazy ("empleador:buscar")
+
     
 # Formulario para cargar empleadores
 class EmpleadorCreate(LoginRequiredMixin, CreateView):

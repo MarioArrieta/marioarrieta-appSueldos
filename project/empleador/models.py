@@ -42,7 +42,7 @@ class Empleado (models.Model):
     
     
     def __str__(self):
-        return f"{self.apellido.title()}, {self.nombre.title()}"
+        return f"{self.apellido.title()}, {self.nombre.title()} ({self.empleador.razonSocial.title()})"
     
     class Meta:
         verbose_name = "Empleado"
