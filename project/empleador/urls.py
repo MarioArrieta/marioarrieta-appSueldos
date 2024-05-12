@@ -17,6 +17,7 @@ urlpatterns = [
         path("pagos/create/", views.PagosCreate.as_view(), name="pagos_create"),
         path("suspensiones/create/", views.SuspensionesCreate.as_view(), name="suspensiones_create"),
         path("vacaciones/create/", views.VacacionesCreate.as_view(), name="vacaciones_create"),
+         path("empleado/delete/<int:pk>", views.EmpleadoDelete.as_view(), name="empleado_delete"),
         
     
 

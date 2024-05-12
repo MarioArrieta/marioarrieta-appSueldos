@@ -36,7 +36,7 @@
                     </div>
                     <div>
                         <a href="{% url 'empleador:empleado_update' empleado.id %}" class="btn btn-sm btn-primary mx-1 btn-warning">Editar</a>
-                        <a href="{% url 'empleador:vacaciones_create' %}" class="btn btn-sm btn-danger">Borrar</a>
+                        <a href="{% url 'empleador:empleado_delete' empleado.id %}" class="btn btn-sm btn-danger">Borrar</a>
                     </div>
                 </li>
                 {% endfor %}
