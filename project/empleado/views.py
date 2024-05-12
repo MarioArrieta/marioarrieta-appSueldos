@@ -33,6 +33,7 @@ def register(request: HttpRequest) -> HttpResponse:
 # Abre el indice del Portal Empleado y muestras la notificaciones recibidas
 class PagosRead(LoginRequiredMixin, ListView):
     template_name = "empleado/index.html"
+    login_url = reverse_lazy ("empleado:login")
     def get_queryset(self):
         return Pagos.objects.all()
     def get_context_data(self, **kwargs):
@@ -47,21 +48,25 @@ class NotificacionesCreate(LoginRequiredMixin, CreateView):
     model = models.Notificaciones
     form_class = forms.NotificacionesForm
     success_url = reverse_lazy ("empleado:index")
+    login_url = reverse_lazy ("empleado:login")
 
 
 # Muestra un detalle de las notificaciones (Pagos) recibidas por el empleador
 class PagosDetail (LoginRequiredMixin, DetailView):
     model = Pagos
     template_name = "empleado/pagos_detail.html" 
+    login_url = reverse_lazy ("empleado:login")
     
 
 # Muestra un detalle de las notificaciones (Vacaciones) recibidas por el empleador
 class VacacionesDetail (LoginRequiredMixin, DetailView):
     model = Vacaciones
     template_name = "empleado/vacaciones_detail.html"
+    login_url = reverse_lazy ("empleado:login")
 
 # Muestra un detalle de las notificaciones (Vacaciones) recibidas por el empleador
 class SuspensionesDetail (LoginRequiredMixin, DetailView):
     model = Suspensiones
     template_name = "empleado/suspensiones_detail.html"
+    login_url = reverse_lazy ("empleado:login")
 
