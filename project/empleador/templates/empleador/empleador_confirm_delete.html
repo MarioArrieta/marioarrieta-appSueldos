@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block  titulo%}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'empleador:empleador_buscar' %}">Volver</a></li>
+{% endblock titulo %}
+
+{% block imagen %}
+   {% static 'empleador/img/empleador.webp' %}
+{% endblock imagen %}
+
+{% block pagina%}
+    ELIMINAR REGISTRO EMPLEADOR 
+{% endblock pagina%}
+
+{% block mensaje%}
+    PORTAL EMPLEADOR
+{% endblock mensaje%}
+
+{% block formulario %}
+    <div class="container mt-4 mb-4">
+        <form action="" method="post">
+            {% csrf_token %}
+            <br>
+            <div class="text-center ">
+                <h3>¿Estás seguro de que deseas borrar el registro de  <strong>{{ empleador.razonSocial }} ?</strong></h3>
+                <button type="submit" class="btn btn-danger mt-3 ">CONFIRMAR</button>
+            </div>
+        </form>
+    </div>
+{% endblock formulario %}

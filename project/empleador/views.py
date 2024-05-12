@@ -42,6 +42,12 @@ class EmpleadoRead(LoginRequiredMixin, ListView):
     template_name = "empleador/empleado_buscar.html"
 
 
+# Muestra todos los empleados registrados    
+class EmpleadorRead(LoginRequiredMixin, ListView):
+    model = models.Empleador
+    template_name = "empleador/empleador_buscar.html"
+
+
 # Muestra un detalle de las notificaciones recibidas por el empleador
 class NotificacionesDetail(DetailView):
     model = Notificaciones
@@ -53,14 +59,23 @@ class EmpleadoUpdate(LoginRequiredMixin, UpdateView):
     model = models. Empleado
     form_class = forms.EmpleadoForm
     template_name = "empleador/empleado_update.html"
-    success_url = reverse_lazy ("empleador:buscar")
+    success_url = reverse_lazy ("empleador:empleado_buscar")
+
+
+# Formulario para editar datos de los  empleados 
+class EmpleadorUpdate(LoginRequiredMixin, UpdateView):
+    model = models. Empleador
+    form_class = forms.EmpleadorForm
+    template_name = "empleador/empleador_update.html"
+    success_url = reverse_lazy ("empleador:empleador_buscar")
+
 
     
 # Formulario para cargar empleadores
 class EmpleadorCreate(LoginRequiredMixin, CreateView):
     model = models. Empleador
     form_class = forms.EmpleadorForm
-    success_url = reverse_lazy ("empleador:index")
+    success_url = reverse_lazy ("empleador:empleador_buscar")
     
 
 # Formulario para cargar empleados 
@@ -94,3 +109,9 @@ class VacacionesCreate (LoginRequiredMixin, CreateView):
 class EmpleadoDelete(LoginRequiredMixin, DeleteView):
     model = models.Empleado
     success_url = reverse_lazy("empleador:empleado_buscar")
+
+# Elimina el registro de un empleado
+class EmpleadorDelete(LoginRequiredMixin, DeleteView):
+    model = models.Empleador
+    success_url = reverse_lazy("empleador:empleador_buscar")
+
