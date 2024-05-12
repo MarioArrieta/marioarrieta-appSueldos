@@ -47,7 +47,7 @@ class EmpleadoForm(forms.ModelForm):
 
 
 class PagosForm(forms.ModelForm):
-    empleado = forms.ModelChoiceField(queryset=Empleador.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    empleado = forms.ModelChoiceField(queryset=Empleado.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
     fecha_pago = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
     importe = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control'}))
     año = forms.CharField( max_length=4, widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -58,7 +58,7 @@ class PagosForm(forms.ModelForm):
 
         
 class VacacionesForm(forms.ModelForm):
-    empleado = forms.ModelChoiceField(queryset=Empleador.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    empleado = forms.ModelChoiceField(queryset=Empleado.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
     fecha_inicio = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
     fecha_fin = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
     período = forms.CharField( max_length=4, widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -69,7 +69,7 @@ class VacacionesForm(forms.ModelForm):
 
 
 class SuspensionesForm(forms.ModelForm):
-    empleado = forms.ModelChoiceField(queryset=Empleador.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    empleado = forms.ModelChoiceField(queryset=Empleado.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
     cantidad_dias = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control'}))
     fecha_reingreso = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
     motivo = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control'}))

@@ -89,21 +89,21 @@ class EmpleadoCreate(LoginRequiredMixin, CreateView):
 class PagosCreate(LoginRequiredMixin, CreateView):
     model = models.Pagos
     form_class = forms.PagosForm
-    success_url = reverse_lazy ("empleador:index")
+    success_url = reverse_lazy ("empleador:empleado_buscar")
 
 
 # Formulario para cargar suspensiones a los empleados
 class SuspensionesCreate(LoginRequiredMixin, CreateView):
     model = models.Suspensiones
     form_class = forms.SuspensionesForm
-    success_url = reverse_lazy ("empleador:index")
+    success_url = reverse_lazy ("empleador:empleado_buscar")
 
 
 # Formulario para cargar vacaciones a los empleados
 class VacacionesCreate (LoginRequiredMixin, CreateView):
     model = models.Vacaciones
     form_class = forms.VacacionesForm
-    success_url = reverse_lazy ("empleador:index")
+    success_url = reverse_lazy ("empleador:empleado_buscar")
 
 # Elimina el registro de un empleado
 class EmpleadoDelete(LoginRequiredMixin, DeleteView):

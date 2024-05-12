@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
-from empleador.models import Empleador
+from empleador.models import Empleado
 
 
 from . import models
@@ -27,7 +27,7 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class NotificacionesForm(forms.ModelForm):
-    empleado = forms.ModelChoiceField(queryset=Empleador.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    empleado = forms.ModelChoiceField(queryset=Empleado.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
     descripcion = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control'}))
     
     
