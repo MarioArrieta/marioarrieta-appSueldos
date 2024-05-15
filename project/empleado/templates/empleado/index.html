@@ -10,7 +10,7 @@
         <a class="nav-link py-3 px-0 px-lg-3 rounded" style="background-color: #6dafec; padding: 5px 10px; border-radius: 5px;">{{ user }}</a>
     </li>
     <li class="nav-item mx-0 mx-lg-1">
-        <form action="{% url 'empleado:logout' %}" method="post">
+        <form action="{% url 'core:logout' %}" method="post">
             {% csrf_token %}
             <button type="submit" class="nav-link py-3 px-0 px-lg-3 rounded" style="background-color: #d81952; padding: 5px 10px; border-radius: 5px; border: none; color: white;">Salir</button>
 
