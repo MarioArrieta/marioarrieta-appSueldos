@@ -36,6 +36,7 @@ class PagosRead(LoginRequiredMixin, ListView):
     login_url = reverse_lazy ("empleado:login")
     def get_queryset(self):
         return Pagos.objects.all()
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['suspensiones'] = Suspensiones.objects.all()
@@ -56,6 +57,13 @@ class PagosDetail (LoginRequiredMixin, DetailView):
     model = Pagos
     template_name = "empleado/pagos_detail.html" 
     login_url = reverse_lazy ("empleado:login")
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        obj.visto = True
+        obj.save()
+        return obj
+
     
 
 # Muestra un detalle de las notificaciones (Vacaciones) recibidas por el empleador
@@ -64,9 +72,23 @@ class VacacionesDetail (LoginRequiredMixin, DetailView):
     template_name = "empleado/vacaciones_detail.html"
     login_url = reverse_lazy ("empleado:login")
 
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        obj.visto = True
+        obj.save()
+        return obj
+
+
 # Muestra un detalle de las notificaciones (Vacaciones) recibidas por el empleador
 class SuspensionesDetail (LoginRequiredMixin, DetailView):
     model = Suspensiones
     template_name = "empleado/suspensiones_detail.html"
     login_url = reverse_lazy ("empleado:login")
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        obj.visto = True
+        obj.save()
+        return obj
+
 

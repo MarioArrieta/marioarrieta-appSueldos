@@ -51,7 +51,7 @@
                     {% for item in object_list %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <div>
-                            {% if item.leido %}
+                            {% if item.visto %}
                                 <span class="badge bg-success">Leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
                             {% else %}
                                 <span class="badge bg-warning text-dark">No leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -84,7 +84,7 @@
                         {% for item in suspensiones %}
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
-                                {% if item.leido %}
+                                {% if item.visto %}
                                     <span class="badge bg-success">Leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
                                 {% else %}
                                     <span class="badge bg-warning text-dark">No leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -117,7 +117,7 @@
                         {% for item in vacaciones %}
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
-                                {% if item.leido %}
+                                {% if item.visto %}
                                     <span class="badge bg-success">Leído</span>&nbsp;&nbsp;&nbsp;&nbsp;
                                 {% else %}
                                     <span class="badge bg-warning text-dark">No leído</span>&nbsp;&nbsp;&nbsp;&nbsp;

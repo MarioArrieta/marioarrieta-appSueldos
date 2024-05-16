@@ -11,6 +11,8 @@ from django.shortcuts import render, redirect
 
 
 
+
+
 # Visualizacion de Inicio de Sesion
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
@@ -56,6 +58,13 @@ class NotificacionesDetail(LoginRequiredMixin, DetailView):
     model = Notificaciones
     template_name = "empleador/notificaciones_detail.html"
     login_url = reverse_lazy ("empleador:login")
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        obj.visto = True
+        obj.save()
+        return obj
+
     
 
 # Formulario para editar datos de los  empleados 
