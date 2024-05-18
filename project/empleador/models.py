@@ -34,6 +34,14 @@ class Avatar(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name="avatar_empleador")
     avatar = models.ImageField(upload_to="avatares", null=True, blank=True)
 
+    def __str__(self):
+        return f"Foto de perfil de {self.usuario} "
+    
+    class Meta:
+        verbose_name = "Foto de Perfil"
+        verbose_name_plural = "Fotos de Perfiles"
+
+
 
 # CLASE QUE PERMITE CREAR A UN EMPLEADO
 class Empleado (models.Model):
