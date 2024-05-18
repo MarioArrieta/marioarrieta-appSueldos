@@ -23,7 +23,7 @@
 
 {% block formulario %}
    <div class="container mt-4 mb-4" >
-      <form action="" method="post">
+      <form action="" method="post" autocomplete="off">
          {% csrf_token %}
          <table class="mx-auto" style="border-collapse: separate; border-spacing: 0 20px;">
             {{ form.as_table }}
