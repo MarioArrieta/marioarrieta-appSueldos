@@ -2,14 +2,11 @@ from . import forms, models
 from empleado.models import Notificaciones, Empleado
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView, DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from .forms import CustomAuthenticationForm, CustomUserCreationForm
-from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
-
-
-
+from django.contrib.auth import login
 
 
 
@@ -20,11 +17,16 @@ class CustomLoginView(LoginView):
 
 
 # Formulario para crear un usuario
-def register(request: HttpRequest) -> HttpResponse:
+def register(request):
     if request.method == "POST":
-        form = CustomUserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            # Crear el objeto Avatar asociado al usuario si se proporciona una imagen de perfil
+            if 'avatar' in request.FILES:
+                avatar = models.Avatar(usuario=user, avatar=request.FILES['avatar'])
+                avatar.save()
+            login(request, user)
             return redirect('empleador:login')
 
     else:
