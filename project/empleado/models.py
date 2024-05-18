@@ -10,6 +10,7 @@ class Notificaciones(models.Model):
     fecha_notificacion = models.DateField(auto_now=True, verbose_name="Fecha de Notificación")
     tipo = models.CharField(max_length=20, choices=tipo_notificacion, verbose_name= "Tipo")
     descripcion = models.CharField(null= True, blank=True, max_length=200, verbose_name="Descripcion")
+    imagen = models.ImageField(upload_to="notificaciones", null=True, blank=True)
     visto = models.BooleanField (editable = False, default=False, verbose_name="Visto")
     
     

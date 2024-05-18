@@ -58,6 +58,7 @@ class Pagos (models.Model):
     liquidacion = models.CharField(max_length=20, choices=liquidacion, verbose_name= "Liquidación")
     meses = models.CharField(max_length=10, choices=meses, verbose_name= "Mes",)
     año = models.PositiveIntegerField(validators=[validate_year_range], verbose_name="Año")
+    imagen = models.ImageField(upload_to="pagos", null=True, blank=True)
     visto = models.BooleanField (editable=False, default=False, verbose_name="Visto")
     
     
@@ -76,6 +77,7 @@ class Vacaciones (models.Model):
     fecha_inicio = models.DateField(verbose_name="Fecha de Inicio")
     fecha_fin = models.DateField(verbose_name="Fecha de Finalizacion")
     período = models.PositiveIntegerField(validators=[validate_year_range], verbose_name="Corresponden al año")
+    imagen = models.ImageField(upload_to="vacaciones", null=True, blank=True)
     visto = models.BooleanField (editable=False, default=False, verbose_name="Visto")
     
     
@@ -94,6 +96,7 @@ class Suspensiones (models.Model):
     cantidad_dias = models.PositiveIntegerField(verbose_name="Cantidad de días")
     fecha_reingreso = models.DateField(verbose_name="Fecha de Reingreso")
     motivo = models.CharField(max_length=200, verbose_name="Motivo")
+    imagen = models.ImageField(upload_to="suspensiones", null=True, blank=True)
     visto = models.BooleanField (editable=False, default=False, verbose_name="Visto")
     
     

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class CustomAuthenticationForm(AuthenticationForm):
-    username = forms.CharField(label="Usuario", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su CUIT'}))
+    username = forms.CharField(label="Usuario", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su CUIT' }))
     password = forms.CharField(label="Contraseña", widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Contraseña'}))
 
     class Meta:

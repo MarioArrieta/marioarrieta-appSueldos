@@ -108,6 +108,7 @@ class PagosCreate(LoginRequiredMixin, CreateView):
     form_class = forms.PagosForm
     success_url = reverse_lazy ("empleador:empleado_buscar")
     login_url = reverse_lazy ("empleador:login")
+    
 
 
 # Formulario para cargar suspensiones a los empleados

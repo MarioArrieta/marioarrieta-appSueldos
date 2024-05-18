@@ -72,6 +72,16 @@
                     </div>
                 </div>
             </div>
+            {% if object.imagen %}
+            <div class="col text-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Archivo Adjunto</h5>
+                        <img src="{{ object.imagen.url }}" alt="Imagen de Pagos" style="max-width: 600px; max-height: 800px; margin: auto;">
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
     <br>
