@@ -22,7 +22,6 @@ def register(request):
         form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
-            # Crear el objeto Avatar asociado al usuario si se proporciona una imagen de perfil
             if 'avatar' in request.FILES:
                 avatar = models.Avatar(usuario=user, avatar=request.FILES['avatar'])
                 avatar.save()
