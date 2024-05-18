@@ -1,7 +1,12 @@
 from django.db import models
 from empleador.models import Empleado
 from .choices import tipo_notificacion
+from django.contrib.auth.models import User
 
+
+class Avatar(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name="avatar_empleado")
+    avatar = models.ImageField(upload_to="avatares", null=True, blank=True)
 
 
 # CLASE QUE PERMITE CREAR NOTIFICACIONES DE LOS EMPLEADOS
