@@ -30,6 +30,10 @@ class Empleador (models.Model):
         verbose_name = "Empleador"
         verbose_name_plural = "Empleadores"
 
+class Avatar(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name="avatar_empleador")
+    avatar = models.ImageField(upload_to="avatares", null=True, blank=True)
+
 
 # CLASE QUE PERMITE CREAR A UN EMPLEADO
 class Empleado (models.Model):

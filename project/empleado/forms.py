@@ -20,10 +20,11 @@ class CustomUserCreationForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     password2 = forms.CharField(label="Confirmar Contraseña", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
     
     class Meta:
         model = User
-        fields = ["username", "password1", "password2" ]
+        fields = ["username", "password1", "password2"]
 
 
 class NotificacionesForm(forms.ModelForm):
