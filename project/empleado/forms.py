@@ -8,7 +8,7 @@ from . import models
 
 
 class CustomAuthenticationForm(AuthenticationForm):
-    username = forms.CharField(label="Usuario", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su CUIT', 'autocomplete': 'new-password'}))
+    username = forms.CharField(label="Usuario", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Usuario', 'autocomplete': 'new-password'}))
     password = forms.CharField(label="Contraseña", widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Contraseña', 'autocomplete': 'new-password'}))
 
     class Meta:

@@ -4,8 +4,10 @@ from .choices import tipo_notificacion
 from django.contrib.auth.models import User
 
 
+
+# CLASE QUE PERMITE AGREGAR UNA FOTO DE PERFIL AL USUARIO EMPLEADO
 class Avatar(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name="avatar_empleado")
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name="avatar_empleado")
     avatar = models.ImageField(upload_to="avatares", null=True, blank=True)
 
     def __str__(self):
@@ -14,8 +16,6 @@ class Avatar(models.Model):
     class Meta:
         verbose_name = "Foto de Perfil"
         verbose_name_plural = "Fotos de Perfiles"
-
-    
 
 
 # CLASE QUE PERMITE CREAR NOTIFICACIONES DE LOS EMPLEADOS

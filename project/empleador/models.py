@@ -30,8 +30,9 @@ class Empleador (models.Model):
         verbose_name = "Empleador"
         verbose_name_plural = "Empleadores"
 
+# CLASE QUE PERMITE AGREGAR UNA FOTO DE PERFIL AL USUARIO EMPLEADOR
 class Avatar(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, related_name="avatar_empleador")
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name="avatar_empleador")
     avatar = models.ImageField(upload_to="avatares", null=True, blank=True)
 
     def __str__(self):
